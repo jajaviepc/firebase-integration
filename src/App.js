@@ -1,10 +1,8 @@
 import './App.css';
 import LinechartContainer from "./component/LinechartContainer";
 import {createStyles, makeStyles} from '@material-ui/core/styles';
-import {AppBar, Button, Grid, IconButton, Toolbar, Typography} from "@material-ui/core"
-import MenuIcon from '@material-ui/icons/Menu';
+import {Grid} from "@material-ui/core"
 import HeaderComponent from "./component/HeaderComponent";
-import TemperatureMeterComponent from "./component/TemperatureMeterComponent";
 
 const useStyles = makeStyles(
     (theme) =>
