@@ -12,10 +12,30 @@ import {
     Legend
 } from "recharts";
 import moment from "moment";
+import {createStyles, makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles(
+    (theme) =>
+        createStyles({
+            dial: {
+                display: "inline-block",
+                width: `300px`,
+                height: `auto`,
+                color: "#000",
+                border: "0.5px solid #fff",
+                padding: "2px"
+            },
+            title: {
+                fontSize: "1em",
+                color: "#000",
+                textAlign:"center"
+            }
+        })
+);
 
 export default (props) => {
     const quantity = 5;
-
+    const styles = useStyles();
 
     const firebase = useFirebaseApp();
     const [temperature, setTemperature] = useState([]);
@@ -139,6 +159,7 @@ export default (props) => {
 
     return (
         <div>
+            <h1 className={styles.title}>Temperatura en tiempo real</h1>
             <LineChart
                 title={"Hola muinda"}
                 width={1000}
@@ -163,7 +184,6 @@ export default (props) => {
                     activeDot={{r: 8}}
                 />
             </LineChart>
-            <p className="notes">Grafica de temperatura en el tiempo</p>
         </div>
     );
 }
