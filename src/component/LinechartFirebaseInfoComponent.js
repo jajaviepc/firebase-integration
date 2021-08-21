@@ -151,10 +151,6 @@ export default (props) => {
         getDataFromFirebase(quantity)
     }, []);
 
-    if (validateIfRender()) {
-        generateObjectToDisplay();
-    }
-
     const data = generateObjectToDisplay();
 
     return (
