@@ -32,11 +32,26 @@ export default (props) => {
     const provider = new firebase.auth.GoogleAuthProvider;
     const firebaseApp = useFirebaseApp();
 
+    function guardaDatos(){
+        firebaseApp.database().ref("Usuarios/" +user.uid)
+            .set(user)
+    }
+
     function login() {
         firebaseApp.auth().signInWithPopup(provider).then(result => {
             console.log(result.user);
+            var userToSave = result.user;
+            var usuario={
+                uid:userToSave.uid,
+                nombre:userToSave.displayName,
+                email:userToSave.email,
+                foto:userToSave.photoURL,
+                dia:userToSave.metadata.lastSignInTime
+            }
             setUser(result.user)
             setIsLogedIn(true)
+            firebaseApp.database().ref("Usuarios/" +usuario.uid)
+                .set(usuario)
         })
 
     }
